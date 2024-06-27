@@ -1,10 +1,10 @@
 module github.com/morelj/lambada
 
-go 1.17
+go 1.21
 
 require (
-	github.com/aws/aws-lambda-go v1.38.0
-	github.com/morelj/httptools v0.3.0
+	github.com/aws/aws-lambda-go v1.47.0
+	github.com/morelj/httptools v0.4.1
 	github.com/stretchr/testify v1.8.2
 )
 
