@@ -15,7 +15,16 @@ var contextKey = contextKeyType{}
 //
 // When no API Gateway request is attached to the http.Request, this function returns nil.
 func GetRequest(r *http.Request) *Request {
-	if res, ok := r.Context().Value(contextKey).(*Request); ok {
+	return GetRequestFromContext(r.Context())
+}
+
+// GetRequestFromContext returns the original API Gateway request stored in ctx.
+// The returned Request value contains both API Gateway V1 and V2 data, but the used fields depend on the actual
+// API Gateway version used.
+//
+// When no API Gateway request is attached to the http.Request, this function returns nil.
+func GetRequestFromContext(ctx context.Context) *Request {
+	if res, ok := ctx.Value(contextKey).(*Request); ok {
 		return res
 	}
 	return nil
